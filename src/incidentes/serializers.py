@@ -19,3 +19,17 @@ class IncidenteCorreoSerializer(serializers.Serializer):
         instance.correoUsuario = validated_data.get('correoUsuario', instance.correoUsuario)
         instance.save()
         return instance
+    
+    def validate_titulo(self, value):
+        if len(value) < 10:
+            raise serializers.ValidationError('Titulo muy corto')
+        else:
+            return value
+        
+    def validate_correoUsuario(self, value):
+        if str(value).__contains__('@') and str(value).count('@') == 1:
+            return value
+        else:
+            raise serializers.ValidationError('Ingrese un correo valido')
+        
+        
