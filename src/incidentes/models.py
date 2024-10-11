@@ -6,7 +6,7 @@ class IncidenteCorreo(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
     revisado = models.BooleanField(default=False)
-    correoUsuario = models.CharField(max_length=20)
+    correoUsuario = models.EmailField()
     fechaCreacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
