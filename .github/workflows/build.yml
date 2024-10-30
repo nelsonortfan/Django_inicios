@@ -25,8 +25,9 @@ jobs:
       - name: pruebas+coverage
         id: pruebas
         run: | 
-          coverage run -m pytest
-          coverage report -m xml -i
+          pwd
+          python -m coverage run -m pytest tests/tests.py
+          python -m coverage xml -i
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
