@@ -28,8 +28,8 @@ jobs:
           pwd
           ls
           cd src/incidentes           
-          python -m coverage run -m pytest tests/tests.py
-          python -m coverage xml -i tests/tests.py
+          coverage run -m pytest tests/tests.py
+          coverage xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
