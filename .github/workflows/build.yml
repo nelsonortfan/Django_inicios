@@ -32,8 +32,10 @@ jobs:
           echo 'sin crear carpeta'
           ls
           mkdir coverage-reports
-          mv coverage.xml coverage-reports
+          cp coverage.xml coverage-reports
           echo 'con carpeta creada'
+          ls
+          cd coverage-reports
           ls
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
