@@ -14,10 +14,20 @@ class DjangoTest(APITestCase):
 
     def setUp(self):
         self.url = reverse('incidentesCorreosLista')
+        self.url2 = reverse('incidenteCorreosDetalle', args=[1])
 
     def test_get_mensaje_correo_list(self):
+        print("El valor de la url es ", self.url)
         response = self.client.get(self.url)        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+    def test_get_mensaje_correo(self):
+        print("El valor de la url2 es ", self.url2)
+        response = self.client.get(self.url2)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
         
     
     
