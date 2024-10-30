@@ -8,6 +8,7 @@ from rest_framework import status
 
 
 def index(request):
+    print("Una nueva linea")
     return HttpResponse("Hello, world. You're at the incidentes index.")
 
 @api_view(['GET','POST'])
