@@ -29,9 +29,12 @@ jobs:
           ls                    
           coverage run -m pytest src/incidentes/tests/tests.py
           coverage xml
+          echo 'sin crear carpeta'
           ls
           mkdir coverage-reports
           mv coverage.xml coverage-reports
+          echo 'con carpeta creada'
+          ls
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
