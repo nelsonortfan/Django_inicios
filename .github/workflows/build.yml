@@ -26,10 +26,10 @@ jobs:
         id: pruebas
         run: | 
           pwd
-          ls
-          cd src/incidentes           
-          coverage run -m pytest tests/tests.py
+          ls                    
+          coverage run -m pytest src/incidentes/tests/tests.py
           coverage xml
+          ls
           mkdir coverage-reports
           mv coverage.xml coverage-reports
       - name: SonarCloud Scan
