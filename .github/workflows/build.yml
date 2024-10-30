@@ -29,7 +29,9 @@ jobs:
           ls
           cd src/incidentes           
           coverage run -m pytest tests/tests.py
-          coverage html
+          coverage xml
+          mkdir coverage-reports
+          mv coverage.xml coverage-reports
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
