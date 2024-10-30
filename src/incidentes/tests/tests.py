@@ -13,6 +13,7 @@ from incidentes.serializers import IncidenteCorreoSerializer
 class DjangoTest(APITestCase):
 
     def setUp(self):
+        self.urlIndex = reverse('index')
         self.url = reverse('incidentesCorreosLista')
         self.url2 = reverse('incidenteCorreosDetalle', args=[1])
 
@@ -22,10 +23,22 @@ class DjangoTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-    def test_get_mensaje_correo(self):
+    def test_get_mensaje_correo_no_existente(self):
         print("El valor de la url2 es ", self.url2)
         response = self.client.get(self.url2)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_delete_mensaje_correo_no_existente(self):
+        print("El valor de la url2 es ", self.url2)
+        response = self.client.delete(self.url2)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_url_principal(self):
+        response = self.client.get(self.urlIndex)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.content, b"Hello, world. You're at the incidentes index.")
+
+
 
 
         
